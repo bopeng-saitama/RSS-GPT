@@ -91,11 +91,13 @@ const ARTICLE_PRICE_ONLY_PATTERN = /^[+\-−]?(?:[$€£¥]|US\$)?\s?\d[\d,]*(?:
 const ARTICLE_SYMBOL_ONLY_PATTERN = /^[A-Z0-9_]{1,16}(?:\/[A-Z0-9_]{1,16})?$/;
 const ARTICLE_SYMBOL_PRICE_PATTERN = /^[A-Z0-9]{2,8}(?:\/[A-Z0-9]{2,8})?\s+[+\-−]?(?:[$€£¥]|US\$)\s?\d/i;
 const ARTICLE_TAG_LINE_PATTERN = /^(?:#[-\w]+(?:\s+|$)){1,12}$/;
+const ARTICLE_TAG_CLOUD_PATTERN = /(?:#[-\w]+(?:\s+|$)){2,}/i;
+const ARTICLE_BARE_URL_PATTERN = /^https?:\/\/\S+$/i;
 const DEDUPE_TRACKING_QUERY_PREFIXES = ["utm_"];
 const DEDUPE_TRACKING_QUERY_KEYS = new Set(["ref", "refs", "source", "campaign", "cmpid", "cmp", "output", "rss"]);
 
 const appRoot = document.getElementById("app");
-const workerBaseUrl = appRoot?.dataset.workerBaseUrl || "";
+const workerBaseUrl = sanitizeHttpUrl(appRoot?.dataset.workerBaseUrl || "");
 
 const state = {
   payload: null,
@@ -259,7 +261,7 @@ function renderInstitutionFilters() {
 
   const html = sources.map((source) => {
     const active = source.id === state.activeInstitution ? " is-active" : "";
-    return `<button class="chip${active}" type="button" data-institution="${source.id}">${source.institution_name}</button>`;
+    return `<button class="chip${active}" type="button" data-institution="${escapeHtml(source.id)}">${escapeHtml(source.institution_name || "")}</button>`;
   }).join("");
 
   const el = document.getElementById("institutionFilters");
@@ -290,18 +292,18 @@ function renderNewsList() {
       <div class="news-row-top">
         <div>
           <div class="news-meta">
-            <span class="news-badge">${CATEGORY_LABELS[article.source_category] || article.source_category}</span>
-            <span>${article.institution_name}</span>
-            <span>${formatTime(article.published_at)}</span>
+            <span class="news-badge">${escapeHtml(CATEGORY_LABELS[article.source_category] || article.source_category || "")}</span>
+            <span>${escapeHtml(article.institution_name || "")}</span>
+            <span>${escapeHtml(formatTime(article.published_at))}</span>
           </div>
           <h3>${escapeHtml(article.title)}</h3>
         </div>
       </div>
       <p>${escapeHtml(getPreparedArticle(article).excerpt || "")}</p>
       <div class="news-actions">
-        <button class="ghost-button" type="button" data-open-detail="${article.id}">查看详情</button>
-        <button class="primary-button" type="button" data-open-report="${article.id}">生成报告</button>
-        <a class="ghost-button link-button" href="${article.url}" target="_blank" rel="noopener noreferrer">原文链接</a>
+        <button class="ghost-button" type="button" data-open-detail="${escapeHtml(article.id)}">查看详情</button>
+        <button class="primary-button" type="button" data-open-report="${escapeHtml(article.id)}">生成报告</button>
+        ${buildSourceLinkMarkup(article.url, "原文链接")}
       </div>
     </article>
   `).join("");
@@ -347,13 +349,23 @@ function renderDetailDrawer() {
   document.getElementById("detailTitle").textContent = article.title;
   document.getElementById("detailExcerpt").textContent = preparedArticle.detail_excerpt || "";
   document.getElementById("detailMeta").innerHTML = `
-    <span class="news-badge">${CATEGORY_LABELS[article.source_category] || article.source_category}</span>
-    <span>${article.institution_name}</span>
-    <span>${formatTime(article.published_at)}</span>
+    <span class="news-badge">${escapeHtml(CATEGORY_LABELS[article.source_category] || article.source_category || "")}</span>
+    <span>${escapeHtml(article.institution_name || "")}</span>
+    <span>${escapeHtml(formatTime(article.published_at))}</span>
     ${article.author ? `<span>${escapeHtml(article.author)}</span>` : ""}
   `;
   document.getElementById("detailBody").innerHTML = preparedArticle.body_html || `<p>${escapeHtml(preparedArticle.excerpt || "")}</p>`;
-  document.getElementById("detailSourceLink").href = article.url;
+  const detailSourceLink = document.getElementById("detailSourceLink");
+  const detailSourceHref = sanitizeHttpUrl(article.url);
+  if (detailSourceHref) {
+    detailSourceLink.href = detailSourceHref;
+    detailSourceLink.classList.remove("is-disabled");
+    detailSourceLink.removeAttribute("aria-disabled");
+  } else {
+    detailSourceLink.removeAttribute("href");
+    detailSourceLink.classList.add("is-disabled");
+    detailSourceLink.setAttribute("aria-disabled", "true");
+  }
   document.getElementById("detailGenerateButton").onclick = () => openReport(article.id);
   state.lastRenderedDetailId = article.id;
 }
@@ -368,12 +380,12 @@ function renderBuiltInSources() {
     return `
       <div class="settings-row">
         <div class="settings-row-meta">
-          <strong>${source.institution_name}</strong>
-          <span>${CATEGORY_LABELS[source.category] || source.category}</span>
+          <strong>${escapeHtml(source.institution_name || "")}</strong>
+          <span>${escapeHtml(CATEGORY_LABELS[source.category] || source.category || "")}</span>
           <span class="settings-source-id">来源键：${escapeHtml(source.id)}</span>
           ${feeds}
         </div>
-        <button class="${buttonClass}" type="button" data-toggle-built-in="${source.id}">${buttonLabel}</button>
+        <button class="${buttonClass}" type="button" data-toggle-built-in="${escapeHtml(source.id)}">${buttonLabel}</button>
       </div>
     `;
   }).join("");
@@ -413,15 +425,15 @@ function renderCustomSources() {
     return `
       <div class="settings-row">
         <div class="settings-row-meta">
-          <strong>${source.institution_name}</strong>
-          <span>${CATEGORY_LABELS[source.category] || source.category}</span>
-          <span class="settings-url">${source.url}</span>
-          <span>${countLabel}</span>
+          <strong>${escapeHtml(source.institution_name || "")}</strong>
+          <span>${escapeHtml(CATEGORY_LABELS[source.category] || source.category || "")}</span>
+          <span class="settings-url">${escapeHtml(source.url || "")}</span>
+          <span>${escapeHtml(countLabel)}</span>
         </div>
         <div class="toolbar-actions">
-          <button class="ghost-button" type="button" data-refresh-custom="${source.id}">刷新</button>
-          <button class="ghost-button ${enabled ? "" : "is-off"}" type="button" data-toggle-custom="${source.id}">${enabled ? "关闭" : "启用"}</button>
-          <button class="ghost-button" type="button" data-delete-custom="${source.id}">删除</button>
+          <button class="ghost-button" type="button" data-refresh-custom="${escapeHtml(source.id)}">刷新</button>
+          <button class="ghost-button ${enabled ? "" : "is-off"}" type="button" data-toggle-custom="${escapeHtml(source.id)}">${enabled ? "关闭" : "启用"}</button>
+          <button class="ghost-button" type="button" data-delete-custom="${escapeHtml(source.id)}">删除</button>
         </div>
       </div>
     `;
@@ -539,8 +551,8 @@ async function openReport(articleId) {
   const modal = document.getElementById("reportModal");
   modal.hidden = false;
   document.getElementById("reportMeta").innerHTML = `
-    <span>${article.institution_name}</span>
-    <span>${formatTime(article.published_at)}</span>
+    <span>${escapeHtml(article.institution_name || "")}</span>
+    <span>${escapeHtml(formatTime(article.published_at))}</span>
   `;
   setReportOutput("报告生成中...");
 
@@ -604,7 +616,7 @@ function setReportMode(mode) {
 function updateReportOutput() {
   const output = document.getElementById("reportOutput");
   if (state.reportMode === "html" && state.reportHtml) {
-    output.innerHTML = state.reportHtml;
+    output.innerHTML = sanitizeReportHtml(state.reportHtml);
     return;
   }
   output.textContent = state.reportMarkdown || "暂无报告内容。";
@@ -784,14 +796,17 @@ function distillArticleHtml(rawHtml, baseUrl = "") {
       continue;
     }
 
-    const text = normalizeWhitespace(node.textContent || "");
+    const clone = node.cloneNode(true);
+    stripInlineNoiseDescendants(clone);
+
+    const text = normalizeWhitespace(clone.textContent || "");
     if (!text) continue;
 
     if (ARTICLE_TERMINAL_SECTION_PATTERNS.some((pattern) => pattern.test(text))) {
       break;
     }
 
-    if (looksLikeNoiseNode(node, text) || ARTICLE_TAG_LINE_PATTERN.test(text)) {
+    if (looksLikeNoiseNode(clone, text) || ARTICLE_TAG_LINE_PATTERN.test(text)) {
       continue;
     }
 
@@ -804,8 +819,6 @@ function distillArticleHtml(rawHtml, baseUrl = "") {
       }
       bodyStarted = true;
     }
-
-    const clone = node.cloneNode(true);
     stripNodeAttributes(clone, baseUrl);
     blocks.push({ html: clone.outerHTML, text });
   }
@@ -822,12 +835,21 @@ function looksLikeNoiseNode(node, text) {
     node.getAttribute("id"),
     node.getAttribute("data-testid"),
     node.getAttribute("aria-label"),
+    node.getAttribute("data-submodule-name"),
   ]
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
 
+  if (ARTICLE_BARE_URL_PATTERN.test(text)) {
+    return true;
+  }
+
   if (ARTICLE_NOISE_ATTR_KEYWORDS.some((keyword) => attrText.includes(keyword))) {
+    return true;
+  }
+
+  if (looksLikeTagCloud(node, text)) {
     return true;
   }
 
@@ -854,7 +876,77 @@ function looksLikeNoiseNode(node, text) {
 
   return false;
 }
+function stripInlineNoiseDescendants(node) {
+  for (const descendant of [...node.querySelectorAll("*")]) {
+    if (looksLikeInlineNoiseDescendant(descendant)) {
+      descendant.remove();
+    }
+  }
+}
 
+function looksLikeInlineNoiseDescendant(node) {
+  const tagName = node.tagName?.toLowerCase();
+  if (!tagName || ["p", "h2", "h3", "h4", "blockquote", "ul", "ol", "pre", "li"].includes(tagName)) {
+    return false;
+  }
+
+  const attrText = [
+    node.getAttribute("class"),
+    node.getAttribute("id"),
+    node.getAttribute("data-testid"),
+    node.getAttribute("aria-label"),
+    node.getAttribute("data-submodule-name"),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+
+  const href = String(node.getAttribute("href") || "").toLowerCase();
+  const text = normalizeWhitespace(node.textContent || "");
+  const hasPriceAttrHint =
+    attrText.includes("price") ||
+    attrText.includes("ticker") ||
+    attrText.includes("quote") ||
+    attrText.includes("price-chip");
+  const hasPriceHrefHint =
+    href.includes("/price/") ||
+    href.includes("/coin-price") ||
+    href.includes("/token-price") ||
+    /\/price-[^/]+/.test(href);
+  const looksLikeCompactMarketText =
+    text.length <= 48 &&
+    (ARTICLE_SYMBOL_PRICE_PATTERN.test(text) ||
+      (text.includes("$") && /\b[A-Z0-9_]{2,10}\b/.test(text)) ||
+      (ARTICLE_SYMBOL_ONLY_PATTERN.test(text) && hasPriceHrefHint));
+
+  return hasPriceAttrHint || (hasPriceHrefHint && looksLikeCompactMarketText);
+}
+
+function looksLikeTagCloud(node, text) {
+  if (!text) return false;
+
+  if (ARTICLE_TAG_CLOUD_PATTERN.test(text) && (text.match(/#/g) || []).length >= 2) {
+    return true;
+  }
+
+  const tagName = node.tagName?.toLowerCase();
+  if (!["ul", "ol"].includes(tagName)) {
+    return false;
+  }
+
+  const items = [...node.querySelectorAll("li")];
+  if (!items.length) {
+    return false;
+  }
+
+  const tagLikeItems = items.filter((item) => {
+    const itemText = normalizeWhitespace(item.textContent || "");
+    const href = String(item.querySelector("a")?.getAttribute("href") || "").toLowerCase();
+    return itemText.startsWith("#") || href.includes("/tags/");
+  }).length;
+
+  return tagLikeItems >= Math.max(2, Math.floor(items.length / 2) + 1);
+}
 function stripNodeAttributes(node, baseUrl = "") {
   if (node.nodeType !== Node.ELEMENT_NODE) return;
   const isLink = node.tagName.toLowerCase() === "a";
@@ -924,12 +1016,85 @@ function resolveArticleHref(href, baseUrl) {
   const raw = String(href || "").trim();
   if (!raw) return "";
   try {
-    return new URL(raw, baseUrl || window.location.href).toString();
+    return sanitizeHttpUrl(new URL(raw, baseUrl || window.location.href).toString());
   } catch (error) {
     return "";
   }
 }
 
+function sanitizeHttpUrl(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  try {
+    const parsed = new URL(raw, window.location.href);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      return "";
+    }
+    return parsed.toString();
+  } catch (error) {
+    return "";
+  }
+}
+
+function buildSourceLinkMarkup(url, label) {
+  const safeUrl = sanitizeHttpUrl(url);
+  if (!safeUrl) {
+    return `<span class="ghost-button link-button is-disabled" aria-disabled="true">${escapeHtml(label)}</span>`;
+  }
+  return `<a class="ghost-button link-button" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a>`;
+}
+
+function sanitizeReportHtml(rawHtml) {
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(String(rawHtml || ""), "text/html");
+  const root = doc.body;
+  if (!root) return "";
+
+  root.querySelectorAll("script, style, iframe, object, embed").forEach((node) => node.remove());
+  root.querySelectorAll("*").forEach((node) => {
+    const tag = node.tagName.toLowerCase();
+    if (!["article", "p", "h3", "h4", "a"].includes(tag)) {
+      unwrapNode(node);
+      return;
+    }
+    [...node.attributes].forEach((attribute) => {
+      node.removeAttribute(attribute.name);
+    });
+    if (tag === "article") {
+      node.setAttribute("class", "report-document");
+      return;
+    }
+    if (tag === "p" && String(node.textContent || "").includes("作者/发言人：")) {
+      node.setAttribute("class", "report-origin-meta");
+      return;
+    }
+    if (tag === "p" && String(node.textContent || "").includes("发布时间：")) {
+      node.setAttribute("class", "report-origin-meta");
+      return;
+    }
+    if (tag === "a") {
+      const safeUrl = sanitizeHttpUrl(node.getAttribute("href"));
+      if (!safeUrl) {
+        unwrapNode(node);
+        return;
+      }
+      node.setAttribute("href", safeUrl);
+      node.setAttribute("target", "_blank");
+      node.setAttribute("rel", "noopener noreferrer");
+    }
+  });
+
+  return root.innerHTML;
+}
+
+function unwrapNode(node) {
+  const parent = node.parentNode;
+  if (!parent) return;
+  while (node.firstChild) {
+    parent.insertBefore(node.firstChild, node);
+  }
+  parent.removeChild(node);
+}
 function normalizeWhitespace(text) {
   return String(text || "").replace(/\s+/g, " ").trim();
 }

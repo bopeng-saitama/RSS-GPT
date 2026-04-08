@@ -20,6 +20,20 @@ function stripTags(html) {
     .trim();
 }
 
+function sanitizeHttpUrl(value) {
+  const raw = String(value || "").trim();
+  if (!raw) return "";
+  try {
+    const parsed = new URL(raw);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      return "";
+    }
+    return parsed.toString();
+  } catch (error) {
+    return "";
+  }
+}
+
 function bodyParagraphs(article) {
   const fromHtml = stripTags(article.body_html || "");
   const body = fromHtml || article.body_text || article.excerpt || article.summary || "";
@@ -41,8 +55,9 @@ function originalMetaLines(article) {
 }
 
 export function buildMarkdownReport(article, summary) {
-  const sourceLine = article.url
-    ? `（[${article.institution_name}](${article.url})）`
+  const safeUrl = sanitizeHttpUrl(article.url);
+  const sourceLine = safeUrl
+    ? `（[${article.institution_name}](${safeUrl})）`
     : `（${article.institution_name}）`;
   const metaLines = originalMetaLines(article);
   const paragraphs = bodyParagraphs(article);
@@ -62,8 +77,9 @@ export function buildMarkdownReport(article, summary) {
 }
 
 export function buildHtmlReport(article, summary) {
-  const sourceLine = article.url
-    ? `（<a href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(article.institution_name)}</a>）`
+  const safeUrl = sanitizeHttpUrl(article.url);
+  const sourceLine = safeUrl
+    ? `（<a href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(article.institution_name)}</a>）`
     : `（${escapeHtml(article.institution_name)}）`;
   const metaLines = originalMetaLines(article)
     .map((line) => `<p class="report-origin-meta">${escapeHtml(line)}</p>`)
