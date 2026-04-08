@@ -29,10 +29,28 @@ CORE_TOPIC_TERMS = (
     "project agorá",
 )
 
+ROUNDUP_PATTERNS = (
+    "what happened in crypto today",
+    "today in crypto",
+    "crypto today",
+    "daily crypto roundup",
+    "weekly crypto roundup",
+    "market wrap",
+    "news roundup",
+)
+
 
 def _keyword_hits(text: str, keywords: list[str]) -> set[str]:
     lowered = text.lower()
     return {keyword.lower() for keyword in keywords if keyword and keyword.lower() in lowered}
+
+
+def _looks_like_roundup(article: dict) -> bool:
+    title = str(article.get("title", "")).lower()
+    summary = str(article.get("summary", "")).lower()
+    url = str(article.get("url", "")).lower()
+    combined = " ".join([title, summary, url])
+    return any(pattern in combined for pattern in ROUNDUP_PATTERNS)
 
 
 def article_matches_source(article: dict, source) -> bool:
@@ -40,6 +58,9 @@ def article_matches_source(article: dict, source) -> bool:
 
 
 def article_match_reason(article: dict, source) -> str:
+    if _looks_like_roundup(article):
+        return "roundup_miss"
+
     strict_text = " ".join(
         [
             str(article.get("title", "")).lower(),

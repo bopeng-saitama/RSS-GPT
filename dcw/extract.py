@@ -29,8 +29,19 @@ ATTR_NOISE_BLOCK_PATTERN = re.compile(
 H1_PATTERN = re.compile(r"<h1\b.*?>.*?</h1>", flags=re.IGNORECASE | re.DOTALL)
 MARKET_LINK_PATTERN = re.compile(r'href\s*=\s*["\'][^"\']*/(?:price|markets|coins)/', flags=re.IGNORECASE)
 ATTR_TEXT_PATTERN = re.compile(
-    r'(?:class|id|data-testid|aria-label)\s*=\s*["\']([^"\']+)["\']',
+    r'(?:class|id|data-testid|aria-label|data-submodule-name)\s*=\s*["\']([^"\']+)["\']',
     flags=re.IGNORECASE,
+)
+INLINE_MARKET_LINK_PATTERN = re.compile(
+    r"<a\b(?=[^>]*(?:href\s*=\s*['\"][^'\"]*(?:/price/|/coin-price|/token-price|(?:^|/)price-[^'\"]*)[^'\"]*['\"]|"
+    r"(?:class|id|data-testid|aria-label|data-submodule-name)\s*=\s*['\"][^'\"]*(?:price|ticker|quote)[^'\"]*['\"]))"
+    r"[^>]*>.*?</a>",
+    flags=re.IGNORECASE | re.DOTALL,
+)
+EMPTY_INLINE_MARKET_WRAPPER_PATTERN = re.compile(
+    r"<(?:span|div)\b(?=[^>]*(?:class|id|data-testid|aria-label|data-submodule-name)\s*=\s*['\"][^'\"]*"
+    r"(?:price|ticker|quote)[^'\"]*['\"])[^>]*>\s*</(?:span|div)>",
+    flags=re.IGNORECASE | re.DOTALL,
 )
 ALLOWED_BLOCK_PATTERN = re.compile(
     r"<(?P<tag>p|h2|h3|h4|blockquote|ul|ol|pre)\b[^>]*>.*?</(?P=tag)>",
@@ -109,6 +120,8 @@ SYMBOL_PRICE_PATTERN = re.compile(
     flags=re.IGNORECASE,
 )
 TAG_LINE_PATTERN = re.compile(r"^(?:#[-\w]+(?:\s+|$)){1,12}$")
+TAG_CLOUD_PATTERN = re.compile(r"(?:#[-\w]+(?:\s+|$)){2,}", flags=re.IGNORECASE)
+BARE_URL_PATTERN = re.compile(r"^https?://\S+$", flags=re.IGNORECASE)
 NOISE_ATTR_KEYWORDS = (
     "social",
     "share",
@@ -164,6 +177,9 @@ def _looks_like_noise_text(text: str, attr_text: str = "", links_to_market_data:
     if not text:
         return True
 
+    if BARE_URL_PATTERN.match(text):
+        return True
+
     if any(keyword in attr_text for keyword in NOISE_ATTR_KEYWORDS):
         return True
 
@@ -197,6 +213,30 @@ def _is_tag_line(text: str) -> bool:
     return bool(TAG_LINE_PATTERN.match(text))
 
 
+def _looks_like_tag_cloud(node, text: str) -> bool:
+    if not text:
+        return False
+
+    if getattr(node, "name", "").lower() not in {"ul", "ol"}:
+        return False
+
+    items = node.find_all("li")
+    if not items:
+        return False
+
+    tag_like_items = 0
+    for item in items:
+        item_text = _normalize_text(item.get_text(" ", strip=True))
+        href = ""
+        link = item.find("a")
+        if link is not None:
+            href = str(link.get("href") or "").lower()
+        if item_text.startswith("#") or "/tags/" in href:
+            tag_like_items += 1
+
+    return tag_like_items >= max(2, len(items) // 2 + 1)
+
+
 def _filter_blocks(blocks: list[dict[str, str | bool]]) -> str:
     kept: list[str] = []
     body_started = False
@@ -210,7 +250,7 @@ def _filter_blocks(blocks: list[dict[str, str | bool]]) -> str:
         if _is_terminal_section(text):
             break
 
-        if _looks_like_noise_text(text, attr_text, links_to_market_data) or _is_tag_line(text):
+        if _looks_like_noise_text(text, attr_text, links_to_market_data) or _is_tag_line(text) or bool(block.get("tag_cloud")):
             continue
 
         if not body_started:
@@ -237,6 +277,9 @@ def _looks_like_noise(node) -> bool:
     attr_text = _node_attr_text(node)
     links_to_market_data = _links_to_market_data(node)
     if _looks_like_noise_text(text, attr_text, links_to_market_data):
+        return True
+
+    if _looks_like_tag_cloud(node, text):
         return True
 
     links = node.find_all("a")
@@ -281,6 +324,7 @@ def distill_article_html(raw_html: str | None) -> str:
                     "tag": tag_match.group(1).lower() if tag_match else "p",
                     "attr_text": attr_text,
                     "links_to_market_data": links_to_market_data,
+                    "tag_cloud": bool(TAG_CLOUD_PATTERN.search(text) and text.count("#") >= 2),
                 }
             )
         return _filter_blocks(blocks)
@@ -312,6 +356,7 @@ def distill_article_html(raw_html: str | None) -> str:
                 "tag": node.name,
                 "attr_text": _node_attr_text(node),
                 "links_to_market_data": _links_to_market_data(node),
+                "tag_cloud": _looks_like_tag_cloud(node, text),
             }
         )
 
@@ -324,7 +369,13 @@ def clean_body_html(raw_html: str | None) -> str:
 
     if BeautifulSoup is None:
         without_blocked = BLOCKED_TAG_PATTERN.sub("", raw_html)
-        return EVENT_HANDLER_PATTERN.sub("", without_blocked)
+        without_inline_market = INLINE_MARKET_LINK_PATTERN.sub("", without_blocked)
+        while True:
+            collapsed = EMPTY_INLINE_MARKET_WRAPPER_PATTERN.sub("", without_inline_market)
+            if collapsed == without_inline_market:
+                break
+            without_inline_market = collapsed
+        return EVENT_HANDLER_PATTERN.sub("", without_inline_market)
 
     soup = BeautifulSoup(raw_html, "html.parser")
 

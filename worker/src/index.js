@@ -2,7 +2,6 @@ import { buildSummaryPrompt, normalizeSummary } from "./prompt.js";
 import { buildHtmlReport, buildMarkdownReport } from "./template.js";
 import { generateWithOpenRouter } from "./providers/openrouter.js";
 import { generateWithSiliconFlow } from "./providers/siliconflow.js";
-import { fetchCustomSourcePreview } from "./rss.js";
 
 function jsonResponse(body, init = {}, corsHeaders = {}) {
   return new Response(JSON.stringify(body), {
@@ -124,14 +123,7 @@ export async function handleReportRequest(request, env, { fetchImpl }) {
 }
 
 export async function handleCustomSourceRequest(request, env, { fetchImpl, now }) {
-  const payload = await request.json();
-  const source = payload?.source;
-  if (!source?.institution_name || !source?.category || !source?.url) {
-    throw new Error("自定义来源字段不完整");
-  }
-
-  const articles = await fetchCustomSourcePreview(source, fetchImpl, now());
-  return jsonResponse({ articles });
+  return jsonResponse({ error: "自定义来源预览已停用" }, { status: 403 });
 }
 
 export async function handleRequest(request, env, options = {}) {

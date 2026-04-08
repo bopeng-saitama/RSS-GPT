@@ -12,8 +12,10 @@
   --accent-soft: rgba(159, 232, 112, 0.18);
   --shadow: 0 18px 42px rgba(36, 31, 22, 0.06);
   --shadow-soft: 0 2px 6px rgba(36, 31, 22, 0.04);
-  --ui-font: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-  --reading-font: "Source Serif 4", "Noto Serif SC", serif;
+  --latin-sans: "Avenir Next", "SF Pro Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --ui-font: var(--latin-sans), "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --reading-font: var(--latin-sans), "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  --editorial-font: "Source Serif 4", Georgia, "Times New Roman", serif;
 }
 
 * {
@@ -28,6 +30,10 @@ body {
     var(--bg);
   color: var(--text);
   font-family: var(--ui-font);
+  -webkit-font-smoothing: antialiased;
+  font-kerning: normal;
+  font-variant-east-asian: proportional-width;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -183,7 +189,10 @@ a {
 .news-row p {
   margin: 0;
   color: var(--muted);
+  font-family: var(--reading-font);
   line-height: 1.7;
+  letter-spacing: 0;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 .news-actions {
@@ -226,6 +235,13 @@ a {
   text-decoration: none;
   display: inline-flex;
   align-items: center;
+}
+
+.link-button.is-disabled,
+.ghost-button.is-disabled {
+  opacity: 0.52;
+  cursor: default;
+  pointer-events: none;
 }
 
 .overlay-panel[hidden] {
@@ -295,19 +311,23 @@ a {
   margin-bottom: 16px;
   font-size: 13px;
   max-width: 48rem;
+  letter-spacing: 0;
 }
 
 .detail-body {
   font-family: var(--reading-font);
-  color: #26211b;
-  font-size: 18px;
-  line-height: 1.85;
+  color: #2e2923;
+  font-size: 17px;
+  line-height: 1.92;
+  letter-spacing: 0;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-variant-east-asian: proportional-width;
   padding-top: 20px;
   border-top: 1px solid rgba(23, 20, 16, 0.08);
 }
 
 .detail-body > * {
-  max-width: 46rem;
+  max-width: 43rem;
 }
 
 .detail-body p {
@@ -319,25 +339,38 @@ a {
 .detail-body h4 {
   font-family: var(--ui-font);
   color: var(--text);
-  letter-spacing: -0.03em;
+  letter-spacing: normal;
+  font-kerning: normal;
 }
 
 .detail-body h2 {
-  margin: 44px 0 16px;
-  font-size: 28px;
-  line-height: 1.2;
+  margin: 42px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(23, 20, 16, 0.1);
+  font-size: 21px;
+  line-height: 1.4;
+  font-weight: 760;
+  letter-spacing: -0.015em;
 }
 
 .detail-body h3 {
-  margin: 32px 0 14px;
-  font-size: 22px;
-  line-height: 1.28;
+  margin: 28px 0 12px;
+  padding-left: 12px;
+  border-left: 3px solid rgba(159, 232, 112, 0.5);
+  font-size: 16px;
+  line-height: 1.52;
+  font-weight: 700;
+  color: #3f392f;
 }
 
 .detail-body h4 {
-  margin: 28px 0 12px;
-  font-size: 18px;
-  line-height: 1.35;
+  margin: 24px 0 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  font-weight: 800;
+  color: #6a645d;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .detail-body blockquote {
@@ -418,18 +451,39 @@ a {
 
 .detail-title {
   margin: 0;
-  font-size: clamp(32px, 3.2vw, 46px);
-  line-height: 1.08;
-  letter-spacing: -0.05em;
+  font-size: clamp(31px, 3vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
   font-weight: 800;
+  text-wrap: balance;
 }
 
 .detail-excerpt {
   margin: 18px 0 0;
   max-width: 46rem;
-  color: #4f4a43;
+  color: #433d35;
+  font-family: var(--reading-font);
   font-size: 18px;
   line-height: 1.72;
+  letter-spacing: 0;
+  font-weight: 500;
+  font-feature-settings: "kern" 1, "liga" 1;
+  font-variant-east-asian: proportional-width;
+  text-wrap: pretty;
+}
+
+.detail-excerpt:empty {
+  display: none;
+}
+
+.detail-section-label {
+  padding-top: 8px;
+  padding-bottom: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .detail-excerpt:empty {
