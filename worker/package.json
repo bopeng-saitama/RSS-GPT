@@ -1,0 +1,9 @@
+{
+  "name": "dcw-worker",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test",
+    "check": "node --check src/index.js && node --check src/rss.js && node --check src/prompt.js && node --check src/template.js"
+  }
+}

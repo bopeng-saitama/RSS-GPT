@@ -1,0 +1,10 @@
+name = "dcw-report-worker"
+main = "src/index.js"
+compatibility_date = "2026-04-08"
+
+[vars]
+ACTIVE_PROVIDER = "openrouter"
+ACTIVE_MODEL = "google/gemini-2.5-flash"
+ALLOWED_ORIGIN = "https://example.pages.dev"
+OPENROUTER_SITE_URL = "https://example.pages.dev"
+OPENROUTER_SITE_NAME = "数币观察"

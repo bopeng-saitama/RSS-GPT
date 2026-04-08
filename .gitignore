@@ -1,0 +1,33 @@
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.venv/
+venv/
+
+# Node / Worker
+worker/node_modules/
+worker/.wrangler/
+worker/.dev.vars
+worker/test/
+
+# Local env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Local debug artifacts
+docs/data/debug.json
+docs/*.xml
+
+# Local planning notes not needed for deployment
+docs/superpowers/
+
+# Tests are kept local by default
+tests/

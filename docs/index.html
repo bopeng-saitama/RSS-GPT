@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数币观察</title>
+    <meta name="build-time" content="2026-04-08T12:09:52" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div
+      id="app"
+      class="app-shell"
+      data-worker-base-url=""
+      data-build-time="2026-04-08T12:09:52"
+    >
+      <header class="topbar">
+        <div>
+          <div class="brand-title">数币观察</div>
+          <div class="brand-subtitle">Digital Currency Watch</div>
+        </div>
+        <button id="openSettingsButton" class="ghost-button" type="button">来源设置</button>
+      </header>
+
+      <p class="intro-strip">抓取各央行、监管机构与研究机构最近三天公开发布的数字货币相关新闻，默认按时间倒序展示，可按来源筛选。</p>
+
+      <section class="filters-panel">
+        <div class="panel-heading">
+          <h1>最近三天新闻</h1>
+          <p id="buildMeta">更新于 2026-04-08T12:09:52</p>
+        </div>
+        <div id="categoryFilters" class="chip-row"></div>
+        <div id="institutionFilters" class="chip-row chip-row-secondary"></div>
+      </section>
+
+      <section id="newsList" class="news-list"></section>
+    </div>
+
+    <aside id="detailDrawer" class="overlay-panel drawer" hidden>
+      <article class="panel-card detail-panel">
+        <div class="detail-topbar">
+          <div class="detail-topbar-label">新闻详情</div>
+          <button id="closeDetailButton" class="ghost-button" type="button">关闭</button>
+        </div>
+        <header class="detail-hero">
+          <div id="detailMeta" class="detail-meta"></div>
+          <h1 id="detailTitle" class="detail-title">新闻详情</h1>
+          <p id="detailExcerpt" class="detail-excerpt"></p>
+        </header>
+        <div id="detailBody" class="detail-body"></div>
+        <div class="detail-actions">
+          <a id="detailSourceLink" class="ghost-button link-button" href="#" target="_blank" rel="noopener noreferrer">查看原文</a>
+          <button id="detailGenerateButton" class="primary-button" type="button">生成报告</button>
+        </div>
+      </article>
+    </aside>
+
+    <section id="sourceSettingsPanel" class="overlay-panel modal" hidden>
+      <div class="panel-card panel-wide">
+        <div class="panel-card-header">
+          <h2>来源设置</h2>
+          <button id="closeSettingsButton" class="ghost-button" type="button">关闭</button>
+        </div>
+
+        <div class="settings-section">
+          <h3>内置来源</h3>
+          <div id="builtInSourcesList" class="settings-list"></div>
+        </div>
+
+        <div class="settings-section">
+          <h3>添加自定义来源</h3>
+          <form id="customSourceForm" class="custom-form">
+            <input id="customInstitutionInput" type="text" placeholder="机构全称" required />
+            <select id="customCategoryInput" required>
+              <option value="">选择来源种类</option>
+              <option value="central_bank">央行</option>
+              <option value="regulator">监管机构</option>
+              <option value="research_institution">研究机构</option>
+            </select>
+            <input id="customUrlInput" type="url" placeholder="https://example.com/feed.xml" required />
+            <button class="primary-button" type="submit">添加来源</button>
+          </form>
+        </div>
+
+        <div class="settings-section">
+          <h3>自定义来源</h3>
+          <div id="customSourcesList" class="settings-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reportModal" class="overlay-panel modal" hidden>
+      <div class="panel-card panel-wide">
+        <div class="panel-card-header">
+          <h2>生成报告</h2>
+          <button id="closeReportButton" class="ghost-button" type="button">关闭</button>
+        </div>
+        <div id="reportMeta" class="detail-meta"></div>
+        <div class="report-toolbar">
+          <div class="mode-switch">
+            <button id="reportModeMarkdown" class="ghost-button is-active" type="button">Markdown</button>
+            <button id="reportModeHtml" class="ghost-button" type="button">HTML</button>
+          </div>
+          <div class="toolbar-actions">
+            <button id="copyReportButton" class="ghost-button" type="button">复制</button>
+            <button id="downloadMarkdownButton" class="ghost-button" type="button">导出 Markdown</button>
+            <button id="downloadHtmlButton" class="ghost-button" type="button">导出 HTML</button>
+          </div>
+        </div>
+        <div id="reportOutput" class="report-output"></div>
+      </div>
+    </section>
+
+    <script src="assets/app.js" defer></script>
+  </body>
+</html>

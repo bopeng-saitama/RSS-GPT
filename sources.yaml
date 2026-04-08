@@ -1,0 +1,580 @@
+sources:
+  - id: ecb_press
+    category: central_bank
+    institution_name: 欧洲中央银行（ECB）
+    enabled: true
+    feeds:
+      - https://www.ecb.europa.eu/rss/press.html
+    strong_keywords:
+      - digital euro
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+
+  - id: ecb_publications
+    category: central_bank
+    institution_name: 欧洲中央银行（ECB）
+    enabled: true
+    feeds:
+      - https://www.ecb.europa.eu/rss/pub.html
+      - https://www.ecb.europa.eu/rss/wppub.html
+      - https://www.ecb.europa.eu/rss/rbu.html
+    strong_keywords:
+      - digital euro
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+
+  - id: fed_press
+    category: central_bank
+    institution_name: 美联储（Federal Reserve）
+    enabled: true
+    feeds:
+      - https://www.federalreserve.gov/feeds/press_all.xml
+      - https://www.federalreserve.gov/feeds/press_monetary.xml
+      - https://www.federalreserve.gov/feeds/speeches_and_testimony.xml
+    strong_keywords:
+      - central bank digital currency
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital dollar
+      - payment stablecoin
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - digital asset
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+
+  - id: boj_all
+    category: central_bank
+    institution_name: 日本银行（Bank of Japan）
+    enabled: true
+    feeds:
+      - https://www.boj.or.jp/rss/whatsnew.xml
+      - https://www.boj.or.jp/rss/statistics.xml
+    strong_keywords:
+      - central bank digital currency
+      - cbdc
+      - digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - virtual currency
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - wholesale cbdc
+      - retail cbdc
+
+  - id: hkma_press
+    category: central_bank
+    institution_name: 香港金融管理局（HKMA）
+    enabled: true
+    feeds:
+      - https://www.hkma.gov.hk/eng/other-information/rss/rss_press-release.xml
+      - https://www.hkma.gov.hk/eng/other-information/rss/rss_research.xml
+      - https://www.hkma.gov.hk/eng/other-information/rss/rss_regtech-knowledge-hub.xml
+    strong_keywords:
+      - stablecoin
+      - virtual asset
+      - cbdc
+      - e-cny
+      - e-hkd
+      - digital currency
+      - crypto-asset
+      - crypto asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - mbridge
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+
+  - id: boe
+    category: central_bank
+    institution_name: 英格兰银行（Bank of England）
+    enabled: true
+    feeds:
+      - https://www.bankofengland.co.uk/rss/news
+      - https://www.bankofengland.co.uk/rss/publications
+      - https://www.bankofengland.co.uk/rss/speeches
+    strong_keywords:
+      - digital pound
+      - stablecoin
+      - cbdc
+      - cryptoasset
+      - crypto asset
+      - digital currency
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+      - systemic stablecoin
+
+  - id: rba
+    category: central_bank
+    institution_name: 澳大利亚储备银行（RBA）
+    enabled: true
+    feeds:
+      - https://www.rba.gov.au/rss/rss-cb-media-releases.xml
+      - https://www.rba.gov.au/rss/rss-cb-speeches.xml
+      - https://www.rba.gov.au/rss/rss-cb-fsr.xml
+      - https://www.rba.gov.au/rss/rss-cb-smp.xml
+      - https://www.rba.gov.au/rss/rss-cb-rdp.xml
+    strong_keywords:
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital currency
+      - wholesale cbdc
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - tokenized deposits
+      - tokenised deposits
+      - digital money
+      - stable token
+
+  - id: riksbank
+    category: central_bank
+    institution_name: 瑞典中央银行（Sveriges Riksbank）
+    enabled: true
+    feeds:
+      - https://www.riksbank.se/en-gb/rss/press-releases/
+      - https://www.riksbank.se/en-gb/rss/speeches/
+      - https://www.riksbank.se/en-gb/rss/minutes-of-the-executive-boards-monetary-policy-meetings/
+    strong_keywords:
+      - e-krona
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital euro
+      - digital currency
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - digital money
+      - tokenized deposits
+      - tokenised deposits
+
+  - id: bank_of_canada
+    category: central_bank
+    institution_name: 加拿大银行（Bank of Canada）
+    enabled: true
+    feeds:
+      - https://www.bankofcanada.ca/utility/news/feed/
+      - https://www.bankofcanada.ca/content_type/press-releases/feed/
+      - https://www.bankofcanada.ca/content_type/speeches/feed/
+      - https://www.bankofcanada.ca/content_type/working-papers/feed/
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - cryptoasset
+    medium_keywords:
+      - project samara
+      - tokenisation
+      - tokenization
+      - tokenized deposits
+      - tokenised deposits
+      - digital money
+      - digital dollar
+
+  - id: banco_de_espana
+    category: central_bank
+    institution_name: 西班牙银行（Banco de España）
+    enabled: true
+    feeds:
+      - https://www.bde.es/wbe/en/inicio/rss/rss-noticias/
+      - https://www.bde.es/wbe/en/inicio/rss/rss-estudios-publicaciones/
+      - https://www.bde.es/wbe/en/inicio/rss/rss-blog/
+    strong_keywords:
+      - digital euro
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - virtual asset
+      - digital currency
+    medium_keywords:
+      - mica
+      - tokenisation
+      - tokenization
+      - tokenized deposits
+      - tokenised deposits
+      - digital money
+      - crypto-assets regulation
+
+  - id: sec_press
+    category: regulator
+    institution_name: 美国证券交易委员会（SEC）
+    enabled: true
+    feeds:
+      - https://www.sec.gov/news/pressreleases.rss
+      - https://www.sec.gov/news/speeches-statements.rss
+    strong_keywords:
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - cryptocurrency
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized securities
+      - tokenised securities
+      - digital asset trading
+
+  - id: cftc
+    category: regulator
+    institution_name: 美国商品期货交易委员会（CFTC）
+    enabled: true
+    feeds:
+      - https://www.cftc.gov/RSS/RSSGP/rssgp.xml
+      - https://www.cftc.gov/RSS/RSSENF/rssenf.xml
+      - https://www.cftc.gov/RSS/RSSST/rssst.xml
+    strong_keywords:
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - cryptocurrency
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - digital asset derivatives
+      - digital commodity
+
+  - id: finma_news
+    category: regulator
+    institution_name: 瑞士金融市场监督管理局（FINMA）
+    enabled: true
+    feeds:
+      - https://www.finma.ch/en/rss/news/
+    strong_keywords:
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - virtual asset
+      - digital asset
+      - dlt trading facility
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - payment token
+      - utility token
+      - asset token
+
+  - id: bis_press
+    category: research_institution
+    institution_name: 国际清算银行（BIS）
+    enabled: true
+    feeds:
+      - https://www.bis.org/doclist/all_pressrels.rss
+      - https://www.bis.org/doclist/cbspeeches.rss
+      - https://www.bis.org/doclist/mgmtspeeches.rss
+    strong_keywords:
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital currency
+      - virtual asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - unified ledger
+      - mbridge
+      - cross-border payments
+      - tokenized deposits
+      - tokenised deposits
+      - digital money
+      - project agora
+      - project agorá
+
+  - id: bis_research
+    category: research_institution
+    institution_name: 国际清算银行（BIS）
+    enabled: true
+    feeds:
+      - https://www.bis.org/doclist/reshub_papers.rss
+    strong_keywords:
+      - cbdc
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital currency
+      - virtual asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - tokenized
+      - tokenised
+      - unified ledger
+      - tokenized deposits
+      - tokenised deposits
+      - digital money
+      - project agora
+      - project agorá
+
+  - id: coindesk
+    category: research_institution
+    institution_name: CoinDesk（数字资产媒体）
+    enabled: true
+    feeds:
+      - https://www.coindesk.com/arc/outboundfeeds/rss/
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - digital euro
+      - digital yuan
+      - digital pound
+      - e-krona
+      - crypto-asset
+      - crypto asset
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital asset
+      - digital money
+      - mbridge
+      - unified ledger
+      - mica
+
+  - id: finextra
+    category: research_institution
+    institution_name: Finextra（金融科技媒体）
+    enabled: false
+    feeds:
+      - https://www.finextra.com/rss/channel.aspx?channel=crypto
+      - https://www.finextra.com/rss/headlines.aspx
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - cryptocurrency
+      - blockchain
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - web3
+
+  - id: cointelegraph
+    category: research_institution
+    institution_name: Cointelegraph（数字资产媒体）
+    enabled: true
+    feeds:
+      - https://cointelegraph.com/rss
+      - https://cointelegraph.com/rss/tag/regulation
+      - https://cointelegraph.com/rss/tag/cbdc
+      - https://cointelegraph.com/rss/tag/stablecoin
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - cryptocurrency
+      - blockchain
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - crypto regulation
+
+  - id: fintech_times
+    category: research_institution
+    institution_name: The Fintech Times（金融科技媒体）
+    enabled: true
+    feeds:
+      - https://thefintechtimes.com/feed/
+      - https://thefintechtimes.com/category/news/digital-assets/feed/
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - digital currency
+      - blockchain
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - web3
+
+  - id: cryptoslate
+    category: research_institution
+    institution_name: CryptoSlate（数字资产媒体）
+    enabled: true
+    feeds:
+      - https://cryptoslate.com/feed/
+      - https://cryptoslate.com/banking/feed
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - digital currency
+      - blockchain
+      - cryptocurrency
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - web3
+      - institutional crypto
+
+  - id: utoday
+    category: research_institution
+    institution_name: U.Today（数字资产媒体）
+    enabled: true
+    feeds:
+      - https://u.today/rss
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - digital currency
+      - blockchain
+      - cryptocurrency
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - web3
+
+  - id: decrypt
+    category: research_institution
+    institution_name: Decrypt（数字资产媒体）
+    enabled: true
+    feeds:
+      - https://decrypt.co/feed
+    strong_keywords:
+      - cbdc
+      - central bank digital currency
+      - stablecoin
+      - crypto-asset
+      - crypto asset
+      - digital asset
+      - virtual asset
+      - digital currency
+      - blockchain
+      - cryptocurrency
+    medium_keywords:
+      - tokenization
+      - tokenisation
+      - tokenized deposits
+      - tokenised deposits
+      - digital euro
+      - digital pound
+      - digital yuan
+      - e-cny
+      - e-krona
+      - mica
+      - web3
+
+  - id: central_banking
+    category: research_institution
+    institution_name: Central Banking（央行研究媒体）
+    enabled: false
+    feeds:
+      - https://www.centralbanking.com/feeds/rss/category/fintech/cbdc
+      - https://www.centralbanking.com/feeds/rss/category/fintech/crypto-assets
+    strong_keywords:
+      - cbdc
+      - stablecoin
+      - crypto-assets
+      - crypto asset
+      - digital euro
+      - virtual asset
+    medium_keywords:
+      - tokenisation
+      - tokenization
+      - tokenized deposits
+      - tokenised deposits
+      - digital asset
+      - mbridge
+      - unified ledger
