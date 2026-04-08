@@ -294,6 +294,7 @@ a {
   gap: 10px;
   margin-bottom: 16px;
   font-size: 13px;
+  max-width: 48rem;
 }
 
 .detail-body {
@@ -301,6 +302,12 @@ a {
   color: #26211b;
   font-size: 18px;
   line-height: 1.85;
+  padding-top: 20px;
+  border-top: 1px solid rgba(23, 20, 16, 0.08);
+}
+
+.detail-body > * {
+  max-width: 46rem;
 }
 
 .detail-body p {
@@ -371,6 +378,7 @@ a {
 
 .detail-topbar,
 .detail-hero,
+.detail-section-label,
 .detail-body,
 .detail-actions {
   padding-left: 40px;
@@ -404,6 +412,10 @@ a {
   padding-bottom: 20px;
 }
 
+.detail-hero > * {
+  max-width: 48rem;
+}
+
 .detail-title {
   margin: 0;
   font-size: clamp(32px, 3.2vw, 46px);
@@ -418,6 +430,20 @@ a {
   color: #4f4a43;
   font-size: 18px;
   line-height: 1.72;
+}
+
+.detail-excerpt:empty {
+  display: none;
+}
+
+.detail-section-label {
+  padding-top: 8px;
+  padding-bottom: 14px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .detail-actions {
@@ -461,6 +487,11 @@ a {
   margin-top: 4px;
   color: var(--muted);
   font-size: 13px;
+}
+
+.settings-source-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: #81796f;
 }
 
 .settings-url {
@@ -532,6 +563,7 @@ a {
 
   .detail-topbar,
   .detail-hero,
+  .detail-section-label,
   .detail-body,
   .detail-actions {
     padding-left: 20px;

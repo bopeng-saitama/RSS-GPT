@@ -103,6 +103,7 @@ const state = {
   activeCategory: "all",
   activeInstitution: "all",
   detailArticleId: null,
+  lastRenderedDetailId: null,
   reportArticleId: null,
   reportMode: "markdown",
   hiddenBuiltIns: new Set(loadJson(STORAGE_KEYS.hiddenBuiltIns, [])),
@@ -158,6 +159,19 @@ function bindStaticActions() {
   document.getElementById("downloadMarkdownButton")?.addEventListener("click", () => downloadReport("markdown"));
   document.getElementById("downloadHtmlButton")?.addEventListener("click", () => downloadReport("html"));
   document.getElementById("customSourceForm")?.addEventListener("submit", onCustomSourceSubmit);
+  document.addEventListener("keydown", onGlobalKeydown);
+  document.querySelectorAll(".overlay-panel").forEach((panel) => {
+    panel.addEventListener("click", (event) => {
+      if (event.target !== panel) return;
+      if (panel.id === "detailDrawer") {
+        closeDetail();
+      } else if (panel.id === "reportModal") {
+        closeReport();
+      } else if (panel.id === "sourceSettingsPanel") {
+        panel.hidden = true;
+      }
+    });
+  });
 }
 
 function render() {
@@ -208,7 +222,7 @@ function getVisibleArticles() {
 
   const filtered = merged
     .filter((article) => state.activeCategory === "all" || article.source_category === state.activeCategory)
-    .filter((article) => state.activeInstitution === "all" || article.source_id === state.activeInstitution)
+    .filter((article) => state.activeInstitution === "all" || institutionKeyForArticle(article) === state.activeInstitution)
     .sort((a, b) => String(b.published_at).localeCompare(String(a.published_at)));
 
   return dedupeArticles(filtered);
@@ -233,11 +247,15 @@ function renderCategoryFilters() {
 }
 
 function renderInstitutionFilters() {
+  const groups = getInstitutionGroups();
   const sources = [
     { id: "all", institution_name: "全部机构", category: "all" },
-    ...getBuiltInSources(),
-    ...state.customSources.filter((source) => source.enabled !== false),
-  ].filter((source) => state.activeCategory === "all" || source.category === state.activeCategory || source.id === "all");
+    ...groups,
+  ];
+
+  if (state.activeInstitution !== "all" && !sources.some((source) => source.id === state.activeInstitution)) {
+    state.activeInstitution = "all";
+  }
 
   const html = sources.map((source) => {
     const active = source.id === state.activeInstitution ? " is-active" : "";
@@ -316,11 +334,18 @@ function renderDetailDrawer() {
   const drawer = document.getElementById("detailDrawer");
   const article = state.detailArticleId ? findArticle(state.detailArticleId) : null;
   drawer.hidden = !article;
-  if (!article) return;
+  if (!article) {
+    state.lastRenderedDetailId = null;
+    return;
+  }
   const preparedArticle = getPreparedArticle(article);
+  const panel = drawer.querySelector(".detail-panel");
+  if (panel && state.lastRenderedDetailId !== article.id) {
+    panel.scrollTop = 0;
+  }
 
   document.getElementById("detailTitle").textContent = article.title;
-  document.getElementById("detailExcerpt").textContent = preparedArticle.excerpt || "";
+  document.getElementById("detailExcerpt").textContent = preparedArticle.detail_excerpt || "";
   document.getElementById("detailMeta").innerHTML = `
     <span class="news-badge">${CATEGORY_LABELS[article.source_category] || article.source_category}</span>
     <span>${article.institution_name}</span>
@@ -330,6 +355,7 @@ function renderDetailDrawer() {
   document.getElementById("detailBody").innerHTML = preparedArticle.body_html || `<p>${escapeHtml(preparedArticle.excerpt || "")}</p>`;
   document.getElementById("detailSourceLink").href = article.url;
   document.getElementById("detailGenerateButton").onclick = () => openReport(article.id);
+  state.lastRenderedDetailId = article.id;
 }
 
 function renderBuiltInSources() {
@@ -344,6 +370,7 @@ function renderBuiltInSources() {
         <div class="settings-row-meta">
           <strong>${source.institution_name}</strong>
           <span>${CATEGORY_LABELS[source.category] || source.category}</span>
+          <span class="settings-source-id">来源键：${escapeHtml(source.id)}</span>
           ${feeds}
         </div>
         <button class="${buttonClass}" type="button" data-toggle-built-in="${source.id}">${buttonLabel}</button>
@@ -359,7 +386,8 @@ function renderBuiltInSources() {
       } else {
         state.hiddenBuiltIns.add(sourceId);
       }
-      if (state.activeInstitution === sourceId) {
+      const source = (state.payload?.sources || []).find((item) => item.id === sourceId);
+      if (source && state.activeInstitution === institutionKeyForSource(source) && !institutionGroupExists(institutionKeyForSource(source), sourceId)) {
         state.activeInstitution = "all";
       }
       persistState();
@@ -404,7 +432,7 @@ function renderCustomSources() {
       const source = state.customSources.find((item) => item.id === button.dataset.toggleCustom);
       if (!source) return;
       source.enabled = source.enabled === false;
-      if (state.activeInstitution === source.id && source.enabled === false) {
+      if (state.activeInstitution === institutionKeyForSource(source) && source.enabled === false && !institutionGroupExists(institutionKeyForSource(source), source.id)) {
         state.activeInstitution = "all";
       }
       persistState();
@@ -414,8 +442,9 @@ function renderCustomSources() {
 
   el.querySelectorAll("[data-delete-custom]").forEach((button) => {
     button.addEventListener("click", () => {
+      const source = state.customSources.find((item) => item.id === button.dataset.deleteCustom);
       state.customSources = state.customSources.filter((item) => item.id !== button.dataset.deleteCustom);
-      if (state.activeInstitution === button.dataset.deleteCustom) {
+      if (source && state.activeInstitution === institutionKeyForSource(source) && !institutionGroupExists(institutionKeyForSource(source), source.id)) {
         state.activeInstitution = "all";
       }
       persistState();
@@ -545,6 +574,21 @@ function closeReport() {
   document.getElementById("reportModal").hidden = true;
 }
 
+function onGlobalKeydown(event) {
+  if (event.key !== "Escape") return;
+  if (!document.getElementById("reportModal")?.hidden) {
+    closeReport();
+    return;
+  }
+  if (!document.getElementById("sourceSettingsPanel")?.hidden) {
+    document.getElementById("sourceSettingsPanel").hidden = true;
+    return;
+  }
+  if (!document.getElementById("detailDrawer")?.hidden) {
+    closeDetail();
+  }
+}
+
 function renderReportModal() {
   if (!state.reportArticleId) return;
   updateReportOutput();
@@ -621,6 +665,45 @@ function formatDateTime(value) {
   }).format(date);
 }
 
+function institutionKeyForSource(source) {
+  return `${source.category || "unknown"}::${source.institution_name || ""}`;
+}
+
+function institutionKeyForArticle(article) {
+  return `${article.source_category || "unknown"}::${article.institution_name || ""}`;
+}
+
+function getInstitutionGroups() {
+  const map = new Map();
+  const candidates = [
+    ...getBuiltInSources(),
+    ...state.customSources.filter((source) => source.enabled !== false),
+  ];
+
+  candidates.forEach((source) => {
+    if (state.activeCategory !== "all" && source.category !== state.activeCategory) {
+      return;
+    }
+    const key = institutionKeyForSource(source);
+    if (!map.has(key)) {
+      map.set(key, {
+        id: key,
+        institution_name: source.institution_name,
+        category: source.category,
+      });
+    }
+  });
+
+  return [...map.values()];
+}
+
+function institutionGroupExists(groupKey, excludedSourceId = null) {
+  return [
+    ...getBuiltInSources(),
+    ...state.customSources.filter((source) => source.enabled !== false),
+  ].some((source) => institutionKeyForSource(source) === groupKey && source.id !== excludedSourceId);
+}
+
 function dedupeArticles(articles) {
   const seen = new Set();
   return articles.filter((article) => {
@@ -652,9 +735,9 @@ function normalizeArticleUrl(url) {
 function articleDedupeKey(article) {
   const normalizedUrl = normalizeArticleUrl(article.url || article.canonical_url || "");
   if (normalizedUrl) {
-    return `${article.source_id || ""}|${normalizedUrl}`;
+    return `${institutionKeyForArticle(article)}|${normalizedUrl}`;
   }
-  return `${article.source_id || ""}|${String(article.title || "").trim().toLowerCase()}|${String(article.published_at || "")}`;
+  return `${institutionKeyForArticle(article)}|${String(article.title || "").trim().toLowerCase()}|${String(article.published_at || "")}`;
 }
 
 function getPreparedArticle(article) {
@@ -667,15 +750,16 @@ function getPreparedArticle(article) {
     canonical_url: normalizeArticleUrl(article.url || article.canonical_url || ""),
   };
 
-  const body = distillArticleHtml(article.body_html || "");
+  const body = distillArticleHtml(article.body_html || "", article.url || article.canonical_url || "");
   prepared.body_html = body.html || textToParagraphs(body.text || article.body_text || article.summary || article.excerpt || "");
   prepared.body_text = body.text || normalizeWhitespace(article.body_text || article.summary || article.excerpt || "");
   prepared.excerpt = buildExcerpt(article.excerpt, prepared.body_text);
+  prepared.detail_excerpt = buildDetailExcerpt(prepared.excerpt, prepared.body_html);
   state.preparedArticles.set(article.id, prepared);
   return prepared;
 }
 
-function distillArticleHtml(rawHtml) {
+function distillArticleHtml(rawHtml, baseUrl = "") {
   if (!rawHtml) {
     return { html: "", text: "" };
   }
@@ -722,7 +806,7 @@ function distillArticleHtml(rawHtml) {
     }
 
     const clone = node.cloneNode(true);
-    stripNodeAttributes(clone);
+    stripNodeAttributes(clone, baseUrl);
     blocks.push({ html: clone.outerHTML, text });
   }
 
@@ -771,15 +855,27 @@ function looksLikeNoiseNode(node, text) {
   return false;
 }
 
-function stripNodeAttributes(node) {
+function stripNodeAttributes(node, baseUrl = "") {
   if (node.nodeType !== Node.ELEMENT_NODE) return;
-  const allowed = node.tagName.toLowerCase() === "a" ? new Set(["href"]) : new Set();
+  const isLink = node.tagName.toLowerCase() === "a";
+  const allowed = isLink ? new Set(["href", "target", "rel"]) : new Set();
   [...node.attributes].forEach((attribute) => {
     if (!allowed.has(attribute.name)) {
       node.removeAttribute(attribute.name);
     }
   });
-  [...node.children].forEach((child) => stripNodeAttributes(child));
+  if (isLink) {
+    const href = node.getAttribute("href");
+    const resolved = resolveArticleHref(href, baseUrl);
+    if (resolved) {
+      node.setAttribute("href", resolved);
+      node.setAttribute("target", "_blank");
+      node.setAttribute("rel", "noopener noreferrer");
+    } else {
+      node.removeAttribute("href");
+    }
+  }
+  [...node.children].forEach((child) => stripNodeAttributes(child, baseUrl));
 }
 
 function buildExcerpt(existingExcerpt, bodyText) {
@@ -790,9 +886,48 @@ function buildExcerpt(existingExcerpt, bodyText) {
   return normalizeWhitespace(bodyText || "").slice(0, 180);
 }
 
+function buildDetailExcerpt(excerpt, bodyHtml) {
+  const cleanedExcerpt = normalizeWhitespace(excerpt || "");
+  if (!cleanedExcerpt) return "";
+  const firstBlock = firstBodyBlockText(bodyHtml);
+  if (!firstBlock) return cleanedExcerpt;
+
+  const normalizedExcerpt = normalizeComparableText(cleanedExcerpt);
+  const normalizedFirstBlock = normalizeComparableText(firstBlock);
+  if (
+    normalizedFirstBlock.startsWith(normalizedExcerpt)
+    || normalizedExcerpt.startsWith(normalizedFirstBlock)
+  ) {
+    return "";
+  }
+  return cleanedExcerpt;
+}
+
+function firstBodyBlockText(bodyHtml) {
+  if (!bodyHtml) return "";
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(bodyHtml, "text/html");
+  const firstBlock = doc.body?.querySelector("p, h2, h3, h4, blockquote, ul, ol, pre");
+  return normalizeWhitespace(firstBlock?.textContent || "");
+}
+
+function normalizeComparableText(text) {
+  return normalizeWhitespace(text).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+}
+
 function textToParagraphs(text) {
   const cleaned = normalizeWhitespace(text);
   return cleaned ? `<p>${escapeHtml(cleaned)}</p>` : "";
+}
+
+function resolveArticleHref(href, baseUrl) {
+  const raw = String(href || "").trim();
+  if (!raw) return "";
+  try {
+    return new URL(raw, baseUrl || window.location.href).toString();
+  } catch (error) {
+    return "";
+  }
 }
 
 function normalizeWhitespace(text) {
