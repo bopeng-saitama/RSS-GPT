@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-10T03:27:21",
+  "generated_at": "2026-04-10T06:55:26",
   "build_day": "2026-04-10",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "utoday-a20f33ec83e2",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Ripple CEO Backs Treasury Secretary's Call To Pass Clarity Act",
+      "summary": "Ripple CEO Brad Garlinghouse has supported U.S. Treasury Secretary Scott Bessent’s urgent call to pass the Digital Asset Market Clarity Act.",
+      "summary_html": "Ripple CEO Brad Garlinghouse has supported U.S. Treasury Secretary Scott Bessent’s urgent call to pass the Digital Asset Market Clarity Act.",
+      "excerpt": "Ripple CEO Brad Garlinghouse has supported U.S. Treasury Secretary Scott Bessent’s urgent call to pass the Digital Asset Market Clarity Act.",
+      "body_html": "<p>Ripple CEO Brad Garlinghouse <a href=\"https://x.com/bgarlinghouse/status/2042278059391492605\">has thrown support</a> behind U.S. Treasury Secretary Scott Bessent’s urgent plea for Congress to pass the Digital Asset Market Clarity Act. </p><p>Garlinghouse took to social media to emphasize a pragmatic approach to the much-talked-about crypto legislation with a straightforward message: \"Progress &gt; Perfection.\"</p><p>The push from both government and industry leaders comes as the highly anticipated market structure bill remains deadlocked in the Senate Banking Committee.</p><p>In an op-ed published by Bessent in The Wall Street Journal, the Treasury Secretary claimed that the Clarity Act was an absolute national security priority.</p><p>\"Congress has spent the better part of half a decade trying to pass a framework to onshore the future of finance,\" Bessent wrote on X (formerly Twitter) while promoting the piece. \"Senate time is precious, and now is the time to act,\" Bessent said. </p><p>Bessent has warned that the broader crypto market remains clouded by regulatory uncertainty and overlapping agency claims. </p><p>He argued that the Clarity Act is the \"necessary next step\" to fully realize the promise of digital assets. </p><p>He believes the U.S. can stop the exodus of developers to offshore hubs like Singapore and Abu Dhabi.</p><h2>Progress over perfection </h2><p>As <a href=\"https://u.today/garlinghouse-on-clarity-act-ripple-doesnt-have-big-dog-in-this-fight?from=article-links\"><u>reported by U.Today</u></a>, Garlinghouse has noted that Ripple technically does not have a \"big dog in this fight.\" </p><p>XRP has already been legally recognized as a non-security commodity. However, Garlinghouse stressed that \"whether we like it or not, the fortunes of Ripple rise and fall a little bit on the fortunes of the crypto industry.\" </p><p>Garlinghouse has repeatedly warned the broader digital asset space not to let the pursuit of an ideal framework kill a good one. \"I think that it is so clear that clarity is better than chaos,\" he previously stated. </p><p>The Ripple boss remains highly optimistic about the bill's prospects despite the current gridlock. He recently predicted an 80% probability that the Clarity Act will pass by the end of April.</p>",
+      "body_text": "Ripple CEO Brad Garlinghouse has thrown support behind U.S. Treasury Secretary Scott Bessent’s urgent plea for Congress to pass the Digital Asset Market Clarity Act. Garlinghouse took to social media to emphasize a pragmatic approach to the much-talked-about crypto legislation with a straightforward message: \"Progress > Perfection.\" The push from both government and industry leaders comes as the highly anticipated market structure bill remains deadlocked in the Senate Banking Committee. In an op-ed published by Bessent in The Wall Street Journal, the Treasury Secretary claimed that the Clarity Act was an absolute national security priority. \"Congress has spent the better part of half a decade trying to pass a framework to onshore the future of finance,\" Bessent wrote on X (formerly Twitter) while promoting the piece. \"Senate time is precious, and now is the time to act,\" Bessent said. Bessent has warned that the broader crypto market remains clouded by regulatory uncertainty and overlapping agency claims. He argued that the Clarity Act is the \"necessary next step\" to fully realize the promise of digital assets. He believes the U.S. can stop the exodus of developers to offshore hubs like Singapore and Abu Dhabi. Progress over perfection As reported by U.Today , Garlinghouse has noted that Ripple technically does not have a \"big dog in this fight.\" XRP has already been legally recognized as a non-security commodity. However, Garlinghouse stressed that \"whether we like it or not, the fortunes of Ripple rise and fall a little bit on the fortunes of the crypto industry.\" Garlinghouse has repeatedly warned the broader digital asset space not to let the pursuit of an ideal framework kill a good one. \"I think that it is so clear that clarity is better than chaos,\" he previously stated. The Ripple boss remains highly optimistic about the bill's prospects despite the current gridlock. He recently predicted an 80% probability that the Clarity Act will pass by the end of April.",
+      "url": "https://u.today/ripple-ceo-backs-treasury-secretarys-call-to-pass-clarity-act",
+      "canonical_url": "https://u.today/ripple-ceo-backs-treasury-secretarys-call-to-pass-clarity-act",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-04-10T13:32:09+08:00",
+      "author": "Alex Dovbnya"
+    },
     {
       "id": "cointelegraph-e7cf914fd6ae",
       "source_id": "cointelegraph",
