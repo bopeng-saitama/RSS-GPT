@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-12T03:31:09",
+  "generated_at": "2026-04-12T10:49:05",
   "build_day": "2026-04-12",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "utoday-b7a70b4aef4a",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Schiff: Bitcoin Is Tanking",
+      "summary": "Peter Schiff is facing intense backlash from the cryptocurrency community after prematurely gloating over a sudden weekend price dip.",
+      "summary_html": "Peter Schiff is facing intense backlash from the cryptocurrency community after prematurely gloating over a sudden weekend price dip.",
+      "excerpt": "Peter Schiff is facing intense backlash from the cryptocurrency community after prematurely gloating over a sudden weekend price dip.",
+      "body_html": "<p>Disclaimer: The opinions expressed by our writers are their own and do not represent the views of U.Today. The financial and market information provided on U.Today is intended for informational purposes only. U.Today is not liable for any financial losses incurred while trading cryptocurrencies. Conduct your own research by contacting financial experts before making any investment decisions.  We believe that all content is accurate as of the date of publication, but certain offers mentioned may no longer be available.</p><p>Gold bug and notorious cryptocurrency skeptic Peter Schiff is <a href=\"https://x.com/PeterSchiff/status/2043144995830460873\">once again</a> taking aim at Bitcoin on X (formerly Twitter), gloating over the cryptocurrency's sudden price drop. </p><p>\"Is there any news, or is Bitcoin tanking just because it's so overpriced?\" Schiff posted to his hundreds of thousands of followers on April 12. </p><p>Schiff broadly described the asset as \"tanking,\" but a quick look at the hourly chart provides a much clearer picture.</p><p>Based on the 1-hour BTC/USD Bitstamp chart, Bitcoin spent most of Saturday consolidating comfortably in the $73,000 to $73,600 range. However, at exactly 01:00 on Sunday, April 12, a massive red candle was printed. The asset plummeted from an open of roughly $73,098 down to a wick low of $71,349 in short order. The price has since stabilized slightly, but the bulls have once again failed to push it to the much-coveted $75,000 level. </p><p>Bitcoin investor Fred Krueger has mocked Schiff's decade-long crusade against the digital asset. \"Peter Schiff watching a 5% dip in Bitcoin after a 6000x return since he started trashing it,\" Krueger wrote. “'Clearly the entire asset class was a mistake.'”</p><h2>A vicious squeeze</h2><p>The drop might not be catastrophic, but it has still resulted in a massive liquidation spree. </p><p>Over the past 24 hours, a staggering 118,652 traders were liquidated across the broader crypto market. In that 12-hour span, $189.85 million was vaporized. </p><p>Over-leveraged bulls were caught completely off guard by the drop, with long liquidations making up $132.80 million of that total.</p><p>The largest single casualty of the event was a massive $4.00 million BTC/USD liquidation order executed on Bybit.</p>",
+      "body_text": "Disclaimer: The opinions expressed by our writers are their own and do not represent the views of U.Today. The financial and market information provided on U.Today is intended for informational purposes only. U.Today is not liable for any financial losses incurred while trading cryptocurrencies. Conduct your own research by contacting financial experts before making any investment decisions. We believe that all content is accurate as of the date of publication, but certain offers mentioned may no longer be available. Gold bug and notorious cryptocurrency skeptic Peter Schiff is once again taking aim at Bitcoin on X (formerly Twitter), gloating over the cryptocurrency's sudden price drop. \"Is there any news, or is Bitcoin tanking just because it's so overpriced?\" Schiff posted to his hundreds of thousands of followers on April 12. Schiff broadly described the asset as \"tanking,\" but a quick look at the hourly chart provides a much clearer picture. Based on the 1-hour BTC/USD Bitstamp chart, Bitcoin spent most of Saturday consolidating comfortably in the $73,000 to $73,600 range. However, at exactly 01:00 on Sunday, April 12, a massive red candle was printed. The asset plummeted from an open of roughly $73,098 down to a wick low of $71,349 in short order. The price has since stabilized slightly, but the bulls have once again failed to push it to the much-coveted $75,000 level. Bitcoin investor Fred Krueger has mocked Schiff's decade-long crusade against the digital asset. \"Peter Schiff watching a 5% dip in Bitcoin after a 6000x return since he started trashing it,\" Krueger wrote. “'Clearly the entire asset class was a mistake.'” A vicious squeeze The drop might not be catastrophic, but it has still resulted in a massive liquidation spree. Over the past 24 hours, a staggering 118,652 traders were liquidated across the broader crypto market. In that 12-hour span, $189.85 million was vaporized. Over-leveraged bulls were caught completely off guard by the drop, with long liquidations making up $132.80 million of that total. The largest single casualty of the event was a massive $4.00 million BTC/USD liquidation order executed on Bybit.",
+      "url": "https://u.today/schiff-bitcoin-is-tanking",
+      "canonical_url": "https://u.today/schiff-bitcoin-is-tanking",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-04-12T15:46:34+08:00",
+      "author": "Alex Dovbnya"
+    },
     {
       "id": "decrypt-a42801df5f52",
       "source_id": "decrypt",
