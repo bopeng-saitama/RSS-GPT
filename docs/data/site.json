@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T03:40:35",
+  "generated_at": "2026-04-26T10:52:47",
   "build_day": "2026-04-26",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "utoday-3ea9ec84d7ec",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Peter Schiff Warns of Strategy 'Death Spiral'",
+      "summary": "Prominent gold advocate and vocal cryptocurrency critic Peter Schiff is sounding the alarm on Michael Saylor's MicroStrategy ($MSTR)..",
+      "summary_html": "Prominent gold advocate and vocal cryptocurrency critic Peter Schiff is sounding the alarm on Michael Saylor's MicroStrategy ($MSTR)..",
+      "excerpt": "Prominent gold advocate and vocal cryptocurrency critic Peter Schiff is sounding the alarm on Michael Saylor's MicroStrategy ($MSTR)..",
+      "body_html": "<p>Vocal Bitcoin critic and prominent gold advocate Peter Schiff has <a href=\"https://x.com/PeterSchiff/status/2048152456123568590\">escalated</a> his attacks on Michael Saylor and Strategy ($MSTR). In his most recent post, he has warned that the company could be facing a catastrophic \"death spiral.\" </p><p>Schiff has taken aim at Strategy's issuance of high-yield preferred shares (which Schiff refers to under the ticker $STRC), which carry a hefty 11.5% yield. The economist posits that this strategy is mathematically doomed.</p><h2>A looming \"death spiral\"?</h2><p>According to Strategy and its backers, Bitcoin only needs to appreciate by a modest 2% annually to cover the 11.5% yield on the preferred shares.</p><p>However, the gold bug argues this premise is flawed because it assumes Strategy will stop issuing new debt. Instead, he points out that Saylor is actively increasing issuance.</p><p>\"The more STRC MSTR sells, the more BTC must rise to cover the yield,\" Schiff explained. </p><p>The notorious BTC naysayer argues that the Virginia-based business intelligence firm does not have traditional corporate earnings to cover these high-yield obligations. This is exactly why Schiff is convinced that the company will eventually be forced to offload BTC.</p><p>The more Bitcoin Saylor is forced to sell, the lower the market price of Bitcoin drops. Furthermore, if the price of the preferred shares falls, the company will have to raise the yield even higher.</p><p>\"The only way to stop the death spiral is for MSTR to cancel the dividend. Then STRC crashes, taking MSTR and BTC with it,\" Schiff has stated. </p><p>On Apr. 18, Schiff noted that the company is no longer able to easily fund its massive Bitcoin buying sprees simply by selling common shares at a premium. \"Now it's forced to issue preferred shares with an 11.5% yield,\" he stated, warning that this obligation can only be met by \"selling more preferreds, discounted common, or Bitcoin.\"</p>",
+      "body_text": "Vocal Bitcoin critic and prominent gold advocate Peter Schiff has escalated his attacks on Michael Saylor and Strategy ($MSTR). In his most recent post, he has warned that the company could be facing a catastrophic \"death spiral.\" Schiff has taken aim at Strategy's issuance of high-yield preferred shares (which Schiff refers to under the ticker $STRC), which carry a hefty 11.5% yield. The economist posits that this strategy is mathematically doomed. A looming \"death spiral\"? According to Strategy and its backers, Bitcoin only needs to appreciate by a modest 2% annually to cover the 11.5% yield on the preferred shares. However, the gold bug argues this premise is flawed because it assumes Strategy will stop issuing new debt. Instead, he points out that Saylor is actively increasing issuance. \"The more STRC MSTR sells, the more BTC must rise to cover the yield,\" Schiff explained. The notorious BTC naysayer argues that the Virginia-based business intelligence firm does not have traditional corporate earnings to cover these high-yield obligations. This is exactly why Schiff is convinced that the company will eventually be forced to offload BTC. The more Bitcoin Saylor is forced to sell, the lower the market price of Bitcoin drops. Furthermore, if the price of the preferred shares falls, the company will have to raise the yield even higher. \"The only way to stop the death spiral is for MSTR to cancel the dividend. Then STRC crashes, taking MSTR and BTC with it,\" Schiff has stated. On Apr. 18, Schiff noted that the company is no longer able to easily fund its massive Bitcoin buying sprees simply by selling common shares at a premium. \"Now it's forced to issue preferred shares with an 11.5% yield,\" he stated, warning that this obligation can only be met by \"selling more preferreds, discounted common, or Bitcoin.\"",
+      "url": "https://u.today/peter-schiff-warns-of-strategy-death-spiral",
+      "canonical_url": "https://u.today/peter-schiff-warns-of-strategy-death-spiral",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-04-26T15:43:37+08:00",
+      "author": "Alex Dovbnya"
+    },
     {
       "id": "cryptoslate-e95e6a8814f6",
       "source_id": "cryptoslate",
