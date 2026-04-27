@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T03:45:41",
+  "generated_at": "2026-04-27T07:37:32",
   "build_day": "2026-04-27",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "cointelegraph-7738261c1fa1",
+      "source_id": "cointelegraph",
+      "source_category": "research_institution",
+      "institution_name": "Cointelegraph（数字资产媒体）",
+      "title": "Western Union eyes May for its stablecoin USDPT rollout",
+      "summary": "Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.",
+      "summary_html": "<p style=\"float: right; margin: 0 0 10px 15px; width: 240px;\"><img alt=\"Western Union eyes May for its stablecoin USDPT rollout\" class=\"type:primaryImage\" src=\"https://images.cointelegraph.com/images/528_aHR0cHM6Ly9zMy5jb2ludGVsZWdyYXBoLmNvbS91cGxvYWRzLzIwMjUtMTIvMDE5YWYzOGQtNTY3YS03ZjQxLTg0NmEtZDdiZGRjMDU0Y2U1.jpg\" /></p><p>Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.</p>",
+      "excerpt": "Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.",
+      "body_html": "<p>Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.</p>",
+      "body_text": "Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.",
+      "url": "https://cointelegraph.com/news/western-union-usdpt-stablecoin-may-launch-dan-network?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "canonical_url": "https://cointelegraph.com/news/western-union-usdpt-stablecoin-may-launch-dan-network",
+      "feed_url": "https://cointelegraph.com/rss",
+      "published_at": "2026-04-27T13:24:58+08:00",
+      "author": "Cointelegraph by Stephen Katte"
+    },
     {
       "id": "utoday-5f75e06b6760",
       "source_id": "utoday",
