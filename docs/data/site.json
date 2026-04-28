@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T03:51:14",
+  "generated_at": "2026-04-28T07:34:13",
   "build_day": "2026-04-28",
   "worker_base_url": "",
   "sources": [
@@ -602,7 +602,7 @@
       "author": "Andjela Radmilac"
     },
     {
-      "id": "cointelegraph-7738261c1fa1",
+      "id": "cointelegraph-0fb8e5a41ed7",
       "source_id": "cointelegraph",
       "source_category": "research_institution",
       "institution_name": "Cointelegraph（数字资产媒体）",
@@ -612,9 +612,9 @@
       "excerpt": "Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.",
       "body_html": "<p>Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.</p>",
       "body_text": "Western Union CEO Devin McGranahan said the company will focus on expanding adoption and embedding digital assets into its core money movement platform going forward.",
-      "url": "https://cointelegraph.com/news/western-union-usdpt-stablecoin-may-launch-dan-network?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+      "url": "https://cointelegraph.com/news/western-union-usdpt-stablecoin-may-launch-dan-network?utm_source=rss_feed&utm_medium=rss_tag_stablecoin&utm_campaign=rss_partner_inbound",
       "canonical_url": "https://cointelegraph.com/news/western-union-usdpt-stablecoin-may-launch-dan-network",
-      "feed_url": "https://cointelegraph.com/rss",
+      "feed_url": "https://cointelegraph.com/rss/tag/stablecoin",
       "published_at": "2026-04-27T13:24:58+08:00",
       "author": "Cointelegraph by Stephen Katte"
     },
