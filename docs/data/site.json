@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-16T11:07:22",
+  "generated_at": "2026-05-16T16:02:25",
   "build_day": "2026-05-16",
   "worker_base_url": "",
   "sources": [
@@ -245,6 +245,23 @@
   ],
   "articles": [
     {
+      "id": "utoday-ae6bd3333fb2",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Ripple Conducts Over 32 Million RLUSD Burn on Ethereum",
+      "summary": "Ripple has completed a total burn of 32,075,051 RLUSD tokens on the Ethereum blockchain, over the last 24 hours, potentially boosting its demand in the market.",
+      "summary_html": "Ripple has completed a total burn of 32,075,051 RLUSD tokens on the Ethereum blockchain, over the last 24 hours, potentially boosting its demand in the market.",
+      "excerpt": "Ripple has completed a total burn of 32,075,051 RLUSD tokens on the Ethereum blockchain, over the last 24 hours, potentially boosting its demand in the market.",
+      "body_html": "<p>After about a week of slowing down on its regular stablecoin burn activity, Ripple has just <a href=\"https://x.com/rl_tracker/status/2055362551001632983?s=46\"><u>conducted</u></a> the biggest RLUSD burn of the month.</p><p>Over the last day, Ripple completed two separate RLUSD burns, which marked the fourth of such transactions recorded so far in May. The massive burn activity, which happened on the Ethereum blockchain, has attracted the attention of market watchers.</p><h2>RLUSD supply shrinks by 32 million</h2><p>As the Ripple stablecoin, RLUSD, continues to gain mass adoption, the team is keen on controlling its supply on both the Ethereum blockchain and the XRP ledger.</p><p>While this is a common practice frequently observed by the Ripple community, the blockchain firm has successfully completed a mass transfer of 32,075,051 RLUSD tokens to null addresses where they can no longer be retrieved.</p><p>Although the crypto community is very familiar with this practice, there is still rising curiosity as to the purpose and frequency of the stablecoin burn.</p><p>The move aims to periodically deflate the amount of the stablecoin left in circulation, primarily controlling its value by regulating its supply while ensuring scarcity.</p><h2>Ripple slows on RLUSD burns</h2><p>Nonetheless, it appears that Ripple has slowed down on this move this month, as only four burn transactions carrying a total of about 62 million <a href=\"https://u.today/rlusd-bridge-expansion-connects-xrpl-ethereum-and-cardano-ecosystems?from=article-links\"><u>RLUSD</u></a> have been conducted so far in May. This is unlike the previous months when the activity was observed more frequently.</p><p>RLUSD has continued to gain adoption among large enterprises, especially companies looking to integrate stablecoins into their business model to facilitate cross-border payments.</p><p>Thus, Ripple has remained keen on its endeavors to foster RLUSD adoption across the global space with multiple developments and partnerships.</p>",
+      "body_text": "After about a week of slowing down on its regular stablecoin burn activity, Ripple has just conducted the biggest RLUSD burn of the month. Over the last day, Ripple completed two separate RLUSD burns, which marked the fourth of such transactions recorded so far in May. The massive burn activity, which happened on the Ethereum blockchain, has attracted the attention of market watchers. RLUSD supply shrinks by 32 million As the Ripple stablecoin, RLUSD, continues to gain mass adoption, the team is keen on controlling its supply on both the Ethereum blockchain and the XRP ledger. While this is a common practice frequently observed by the Ripple community, the blockchain firm has successfully completed a mass transfer of 32,075,051 RLUSD tokens to null addresses where they can no longer be retrieved. Although the crypto community is very familiar with this practice, there is still rising curiosity as to the purpose and frequency of the stablecoin burn. The move aims to periodically deflate the amount of the stablecoin left in circulation, primarily controlling its value by regulating its supply while ensuring scarcity. Ripple slows on RLUSD burns Nonetheless, it appears that Ripple has slowed down on this move this month, as only four burn transactions carrying a total of about 62 million RLUSD have been conducted so far in May. This is unlike the previous months when the activity was observed more frequently. RLUSD has continued to gain adoption among large enterprises, especially companies looking to integrate stablecoins into their business model to facilitate cross-border payments. Thus, Ripple has remained keen on its endeavors to foster RLUSD adoption across the global space with multiple developments and partnerships.",
+      "url": "https://u.today/ripple-conducts-over-32-million-rlusd-burn-on-ethereum",
+      "canonical_url": "https://u.today/ripple-conducts-over-32-million-rlusd-burn-on-ethereum",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-05-16T19:47:13+08:00",
+      "author": "Caroline Amosun"
+    },
+    {
       "id": "cointelegraph-decaea3fd1d8",
       "source_id": "cointelegraph",
       "source_category": "research_institution",
@@ -464,23 +481,6 @@
       "feed_url": "https://u.today/rss",
       "published_at": "2026-05-15T15:43:00+08:00",
       "author": "Arman Shirinyan"
-    },
-    {
-      "id": "coindesk-5c987af8b535",
-      "source_id": "coindesk",
-      "source_category": "research_institution",
-      "institution_name": "CoinDesk（数字资产媒体）",
-      "title": "CLARITY will strengthen dollar stablecoins, but Asia wins on yield: HashKey Research",
-      "summary": "",
-      "summary_html": "",
-      "excerpt": "",
-      "body_html": "",
-      "body_text": "",
-      "url": "https://www.coindesk.com/policy/2026/05/15/clarity-will-strengthen-dollar-stablecoins-but-asia-wins-on-yield-hashkey-research",
-      "canonical_url": "https://www.coindesk.com/policy/2026/05/15/clarity-will-strengthen-dollar-stablecoins-but-asia-wins-on-yield-hashkey-research",
-      "feed_url": "https://www.coindesk.com/arc/outboundfeeds/rss/",
-      "published_at": "2026-05-15T14:47:42+08:00",
-      "author": "Sam Reynolds"
     },
     {
       "id": "utoday-4965c67482d5",
