@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T04:38:12",
+  "generated_at": "2026-05-31T08:19:01",
   "build_day": "2026-05-31",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "utoday-f4bd75367398",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Canadian Billionaire: Crypto Can Be Seized, It's Not Digital Gold",
+      "summary": "The financier argued that cryptocurrency's lack of absolute protection against state authority fundamentally disqualifies it from being labeled \"digital gold\".",
+      "summary_html": "The financier argued that cryptocurrency's lack of absolute protection against state authority fundamentally disqualifies it from being labeled \"digital gold\".",
+      "excerpt": "The financier argued that cryptocurrency's lack of absolute protection against state authority fundamentally disqualifies it from being labeled \"digital gold\".",
+      "body_html": "<p>Canadian billionaire philanthropist and prominent gold advocate Frank Giustra has <a href=\"https://x.com/Frank_Giustra/status/2060666628266770670\"><u>re-ignited</u></a> the fierce debate surrounding cryptocurrency’s safe-haven status. The magnate has warned that the crypto sector is actually vulnerable to state intervention.</p><h2>\"There is no escape\"</h2><p>Giustra's latest criticism has been prompted by remarks from prominent media personalities and U.S. Treasury Secretary Scott Bessent regarding the federal seizure of approximately $1 billion worth of cryptocurrency wallets.</p><p>\"Some of them are typing in their wallets right now and have no idea it’s already gone,\" Bessent said.</p><p>Giustra seized on the news to slam Bitcoin's alleged vulnerability.  </p><p>One crypto proponent noted that memorized seed phrases are impossible for governments to confiscate. However, Giusta does not buy this.</p><p>\"Sir, you only need to look at the entire make-up of the US Government Bitcoin Reserve,\" Giustra countered. \"100% seized Bitcoin. They can trace it and eventually find you. There is no escape. Sure you could leave the country as a fugitive….is that a way to live, though???\"</p><h2>A loud Bitcoin skeptic </h2><p>Giustra has repeatedly reminded investors that public ledger technology leaves a permanent trail. </p><p>He argued that Bitcoin is not nearly as safe from the \"prying eyes of a government in crisis as physical gold.\" </p><p>According to Giusta, the U.S. government's entire multi-billion-dollar Bitcoin hoard was obtained through confiscation. \"I prefer to sleep at night,\" he added.</p><p>Giustra also dismantled the core concept of cryptocurrency decentralization, pointing to institutional adoption as a major risk factor. \"Wall Street owns and controls the outcome,\" he warned.</p><p>The Canadian billionaire stated that Bitcoin does \"not so much\" share that practical value. </p>",
+      "body_text": "Canadian billionaire philanthropist and prominent gold advocate Frank Giustra has re-ignited the fierce debate surrounding cryptocurrency’s safe-haven status. The magnate has warned that the crypto sector is actually vulnerable to state intervention. \"There is no escape\" Giustra's latest criticism has been prompted by remarks from prominent media personalities and U.S. Treasury Secretary Scott Bessent regarding the federal seizure of approximately $1 billion worth of cryptocurrency wallets. \"Some of them are typing in their wallets right now and have no idea it’s already gone,\" Bessent said. Giustra seized on the news to slam Bitcoin's alleged vulnerability. One crypto proponent noted that memorized seed phrases are impossible for governments to confiscate. However, Giusta does not buy this. \"Sir, you only need to look at the entire make-up of the US Government Bitcoin Reserve,\" Giustra countered. \"100% seized Bitcoin. They can trace it and eventually find you. There is no escape. Sure you could leave the country as a fugitive….is that a way to live, though???\" A loud Bitcoin skeptic Giustra has repeatedly reminded investors that public ledger technology leaves a permanent trail. He argued that Bitcoin is not nearly as safe from the \"prying eyes of a government in crisis as physical gold.\" According to Giusta, the U.S. government's entire multi-billion-dollar Bitcoin hoard was obtained through confiscation. \"I prefer to sleep at night,\" he added. Giustra also dismantled the core concept of cryptocurrency decentralization, pointing to institutional adoption as a major risk factor. \"Wall Street owns and controls the outcome,\" he warned. The Canadian billionaire stated that Bitcoin does \"not so much\" share that practical value.",
+      "url": "https://u.today/canadian-billionaire-crypto-can-be-seized-its-not-digital-gold",
+      "canonical_url": "https://u.today/canadian-billionaire-crypto-can-be-seized-its-not-digital-gold",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-05-31T15:58:46+08:00",
+      "author": "Alex Dovbnya"
+    },
     {
       "id": "cointelegraph-1ac0e0fa45ff",
       "source_id": "cointelegraph",
