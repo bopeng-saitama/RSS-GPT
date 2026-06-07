@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-07T04:42:55",
+  "generated_at": "2026-06-07T08:26:29",
   "build_day": "2026-06-07",
   "worker_base_url": "",
   "sources": [
@@ -244,6 +244,23 @@
     }
   ],
   "articles": [
+    {
+      "id": "utoday-3fac556c7dd9",
+      "source_id": "utoday",
+      "source_category": "research_institution",
+      "institution_name": "U.Today（数字资产媒体）",
+      "title": "Tether Flips Ethereum, Bloomberg Says Bitcoin Is Next",
+      "summary": "Bloomberg's Mike McGlone has issued a dire warning for the cryptocurrency market, predicting that a looming macroeconomic \"hangover\" could send Bitcoin crashing to $10,000.",
+      "summary_html": "Bloomberg's Mike McGlone has issued a dire warning for the cryptocurrency market, predicting that a looming macroeconomic \"hangover\" could send Bitcoin crashing to $10,000.",
+      "excerpt": "Bloomberg's Mike McGlone has issued a dire warning for the cryptocurrency market, predicting that a looming macroeconomic \"hangover\" could send Bitcoin crashing to $10,000.",
+      "body_html": "<p>Bloomberg Senior Macro Strategist Mike McGlone has <a href=\"https://x.com/mikemcglone11/status/2063269341181735133\">predicted</a> a catastrophic crash that could send Bitcoin plunging to $10,000. </p><p>McGlone believes that the Tether (USDT) stablecoin is currently on track to overtake Bitcoin as the number one cryptocurrency by market capitalization.</p><h2>The flippening </h2><p>During a violent sell-off in early June, Tether briefly surpassed Ethereum in market capitalization. The U.S. dollar-pegged stablecoin became the number two cryptocurrency in the world.</p><blockquote><p>I was early, not wrong. Tether did flip Ethereum.  <a href=\"https://t.co/Yzr9kCJDj0\">pic.twitter.com/Yzr9kCJDj0</a></p>— Samson Mow (@Excellion) <a href=\"https://x.com/Excellion/status/2062996787229818889?ref_src=twsrc%5Etfw\">June 5, 2026</a></blockquote><p>McGlone sees their rise as a logical evolution. \"The technology is awesome,\" he noted. \"Cryptos adopted the dollar as their base layer, invested in US Treasuries. What rational American would push back on that?\"</p><h2>A historic hangover </h2><p>The Bloomberg strategist believes the macroeconomic reality will deliver a big blow to risk assets of the likes of Bitcoin despite various political and regulatory headwinds. </p><p>The pundit has described the recent crypto bull run as a \"historic\" pump. He is convinced that severe correction is mathematically inevitable (just like for other bubbles).</p><p>\"But the pump was historic, and the hangover should be proportional if the history of bubbles prevails,\" McGlone warned investors.</p><p>According to McGlone, political calculus is changing in real-time. He suspects the current administration is recognizing that the record-shattering stock market is contributing to consumer pain.</p><p>\"Higher interest rates contain inflation (a top election issue) and put downward pressure on bond yields,\" McGlone theorized. He added, \"He might be figuring out that the record-setting stock market is a top source of inflation, which is a great way to get the party in power voted out.\"</p>",
+      "body_text": "Bloomberg Senior Macro Strategist Mike McGlone has predicted a catastrophic crash that could send Bitcoin plunging to $10,000. McGlone believes that the Tether (USDT) stablecoin is currently on track to overtake Bitcoin as the number one cryptocurrency by market capitalization. The flippening During a violent sell-off in early June, Tether briefly surpassed Ethereum in market capitalization. The U.S. dollar-pegged stablecoin became the number two cryptocurrency in the world. I was early, not wrong. Tether did flip Ethereum. pic.twitter.com/Yzr9kCJDj0 — Samson Mow (@Excellion) June 5, 2026 McGlone sees their rise as a logical evolution. \"The technology is awesome,\" he noted. \"Cryptos adopted the dollar as their base layer, invested in US Treasuries. What rational American would push back on that?\" A historic hangover The Bloomberg strategist believes the macroeconomic reality will deliver a big blow to risk assets of the likes of Bitcoin despite various political and regulatory headwinds. The pundit has described the recent crypto bull run as a \"historic\" pump. He is convinced that severe correction is mathematically inevitable (just like for other bubbles). \"But the pump was historic, and the hangover should be proportional if the history of bubbles prevails,\" McGlone warned investors. According to McGlone, political calculus is changing in real-time. He suspects the current administration is recognizing that the record-shattering stock market is contributing to consumer pain. \"Higher interest rates contain inflation (a top election issue) and put downward pressure on bond yields,\" McGlone theorized. He added, \"He might be figuring out that the record-setting stock market is a top source of inflation, which is a great way to get the party in power voted out.\"",
+      "url": "https://u.today/tether-flips-ethereum-bloomberg-says-bitcoin-is-next",
+      "canonical_url": "https://u.today/tether-flips-ethereum-bloomberg-says-bitcoin-is-next",
+      "feed_url": "https://u.today/rss",
+      "published_at": "2026-06-07T14:59:11+08:00",
+      "author": "Alex Dovbnya"
+    },
     {
       "id": "coindesk-3963a3ee125b",
       "source_id": "coindesk",
